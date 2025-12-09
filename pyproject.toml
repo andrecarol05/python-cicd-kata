@@ -6,10 +6,12 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "fastapi[standard]>=0.115.8",
+    "pyright>=1.1.407",
 ]
 
 [dependency-groups]
 dev = [
+    "pre-commit>=4.5.0",
     "pyright>=1.1.394",
     "pytest>=8.3.4",
     "ruff>=0.9.6",

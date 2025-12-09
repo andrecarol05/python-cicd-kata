@@ -1,0 +1,57 @@
+name: Code Quality
+run-name: ${{ github.actor }} is checking code quality 🔎
+on:
+  pull_request:
+    branches:
+    - main
+jobs:
+  check-linter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install uv ruff
+      - run: uv run ruff check .
+
+  check-formatter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install uv ruff
+      - run: uv run ruff format .
+
+  check-type-safety:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install uv pyright
+      - run: uv run pyright
+
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: "Set up Python"
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: ".python-version"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Install the project
+        run: uv sync --all-extras --dev
+        shell: bash
+
+      - name: Run unit tests
+        run: uv run pytest
+        shell: bash

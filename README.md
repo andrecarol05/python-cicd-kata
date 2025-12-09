@@ -1,5 +1,5 @@
 # Python CI/CD Kata
-
+hola
 ![Rocket](docs/rocket.png)
 
 This repository contains a very simple web service that simulates rolling a die by generating a random number. The main purpose of this project is to help you practice and understand key concepts of Continuous Integration (CI) and Continuous Deployment (CD). Throughout this workshop, you will explore how to set up a CI/CD pipeline with GitHub Actions for code quality checks, deliver the image to DockerHub and deploy to Render.

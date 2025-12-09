@@ -57,7 +57,7 @@ jobs:
         shell: bash
 
   push-to-registry:
-    need:
+    needs:
       - check-formatter
       - check-linter
       - check-type-safety
